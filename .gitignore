@@ -1,0 +1,4 @@
+*.spec
+*.lock
+build/
+dist/
