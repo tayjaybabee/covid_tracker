@@ -1,0 +1,7 @@
+Version = {
+    'prog': 'covid_tracker',
+    'release': '1.0',
+    'pre_release': 'true',
+    'dev_stage': 'alpha',
+    'pr_ver': '1.02'
+}
