@@ -49,11 +49,12 @@ for state in s_data:
     # Grab the total deceased
     deceased = state['death']
 
-    # Add state's number to total
-    total_dead += deceased
+    if deceased is not None:
+        # Add commas to 'deceased' amount
+        f_deceased = "{:,}".format(deceased)
 
-    # Add commas to 'deceased' amount
-    f_deceased = "{:,}".format(deceased)
+        # Add state's number to total
+        total_dead += deceased
 
     # Prepare statement to print for the state totals and then print it
     statement = str(f"{name}: Infected: {f_pos} | Recovered: {f_recovered} | Deceased: {f_deceased}")
