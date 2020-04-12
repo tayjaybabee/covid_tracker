@@ -8,6 +8,7 @@ pyinstaller = "*"
 
 [packages]
 requests = "*"
+PySimpleGUIQt = "*"
 
 [requires]
 python_version = "3.6"
