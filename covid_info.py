@@ -10,6 +10,12 @@ import requests
 from argparse import ArgumentParser
 from time import sleep
 from datetime import datetime
+from assets.images.icons import main as c_icon, error as err_icon
+import os
+from pathlib import Path
+from configparser import ConfigParser
+from conf import run
+from lib.gui.models.menus import main_menu
 
 parser = ArgumentParser('covid_info',
                         prefix_chars='+-',
@@ -21,6 +27,29 @@ parser.add_argument('--gui', action='store_true', required=False,
                     dest='gui')
 
 parser = parser.parse_args()
+
+conf_path = Path(os.path.abspath('conf/'))
+
+conf_file = Path(os.path.abspath('conf/settings.ini'))
+
+if conf_path.exists():
+    if conf_file.exists():
+        if parser.gui:
+            config = ConfigParser()
+            config.read('conf/settings.ini')
+            run.config = config
+            if 'GUI' in config:
+                print(config['GUI']['theme'])
+                app_theme = config['GUI']['theme']
+
+        loaded_settings = True
+    else:
+        loaded_settings = False
+else:
+    print('false')
+
+if parser.gui and not app_theme:
+    app_theme = 'Dark2'
 
 fetched = False
 
@@ -116,14 +145,17 @@ if parser.gui:
     print('')
     import PySimpleGUIQt as Qt
 
+    Qt.theme(app_theme)
+
     layout = [
+        [Qt.Menu(main_menu.definition, tearoff=False, pad=(200, 1))],
         [Qt.MultilineOutput(autoscroll=True, key='output')],
         [Qt.Button('Refresh', enable_events=True, key='refresh_bttn'),
          Qt.Button('Inspect', enable_events=True, key='inspect_bttn', visible=False),
          Qt.CloseButton('Close', key='close_bttn')]
     ]
 
-    window = Qt.Window('CoVid 19 United States Stats', layout, size=(500, 600))
+    window = Qt.Window('CoVid 19 United States Stats', layout, size=(500, 600), icon=c_icon)
     print = window['output'].print
 
     while True:
@@ -144,6 +176,9 @@ if parser.gui:
             fetched = False
 
         if event == 'inspect_bttn':
-            Qt.PopupError('This feature is not yet implemented!', title='Not yet implemented!', keep_on_top=True)
+            Qt.PopupError('\nThis feature is not yet implemented!\n',
+                          title='Not yet implemented!',
+                          keep_on_top=True,
+                          icon=err_icon)
 
 fetch_data()
