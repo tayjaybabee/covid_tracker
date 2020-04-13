@@ -28,10 +28,10 @@ fetched = False
 def fetch_data():
     """
 
-    Grabs the latest data (retrieved from covidtracking.com) and returns the data
-    sorted by most infected state to least infected state
+    Grabs the latest data (retrieved from covidtracking.com) and returns it line-by-line sorted by most infected state
+    to least infected state
 
-    :return:
+    :return: dict
     """
     global fetched
 
