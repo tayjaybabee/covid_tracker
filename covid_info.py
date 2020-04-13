@@ -38,8 +38,12 @@ def fetch_data():
     # API URL
     url = 'https://covidtracking.com/api/v1/states/current.json'
 
-    # Get web results
-    res = requests.get(url)
+    # Get web results or print connection exception
+    try:
+        res = requests.get(url)
+    except requests.exceptions.ConnectionError as e:
+        print('Unable to reach data source. Please check your internet connection and try again!')
+        exit(6)
 
     # Extract data from page
     data = res.json()
