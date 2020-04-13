@@ -68,4 +68,4 @@ You can also use the '--gui' switch to start the program with a graphical user i
 $> covid_tracker --gui
 
 ```
-![Screen Shot 1](https://raw.githubusercontent.com/tayjaybabee/covid_tracker/master/images/screen_capture.png)
+![Screen Shot 1](https://raw.githubusercontent.com/tayjaybabee/covid_tracker/master/assets/images/screen_capture.png)
