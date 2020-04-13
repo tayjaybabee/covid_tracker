@@ -119,7 +119,7 @@ if parser.gui:
          Qt.CloseButton('Close', key='close_bttn')]
     ]
 
-    window = Qt.Window('CoVid 19 United States Stats', layout)
+    window = Qt.Window('CoVid 19 United States Stats', layout, size=(500, 600))
     print = window['output'].print
 
     while True:
