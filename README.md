@@ -2,62 +2,69 @@
 
 I want to have a lot more features, but for now this just gathers the latest data reported about the United States, state-by-state and prints out each states total infected, recovered, and deceased in order of most infected state to least.
 ```
-(covid_tracker-GoxmQOa8) C:\Users\taylor\covid_tracker\dist>covid_info.exe
-NY: Infected: 180,458 | Recovered: 14,590 | Deceased: 8,627
-NJ: Infected: 58,151 | Recovered: None | Deceased: 2,183
-MI: Infected: 23,993 | Recovered: 595 | Deceased: 1,392
-MA: Infected: 22,860 | Recovered: None | Deceased: 686
-PA: Infected: 21,655 | Recovered: None | Deceased: 494
-LA: Infected: 20,014 | Recovered: None | Deceased: 806
-IL: Infected: 19,810 | Recovered: None | Deceased: 677
-CA: Infected: 19,472 | Recovered: None | Deceased: 541
-FL: Infected: 18,494 | Recovered: None | Deceased: 438
-TX: Infected: 12,561 | Recovered: 1,617 | Deceased: 254
-GA: Infected: 12,159 | Recovered: None | Deceased: 428
-CT: Infected: 11,510 | Recovered: None | Deceased: 494
-WA: Infected: 9,887 | Recovered: None | Deceased: 475
-MD: Infected: 7,694 | Recovered: 431 | Deceased: 206
-IN: Infected: 7,435 | Recovered: None | Deceased: 330
-CO: Infected: 6,510 | Recovered: None | Deceased: 250
-OH: Infected: 6,250 | Recovered: None | Deceased: 247
-TN: Infected: 5,114 | Recovered: 1,386 | Deceased: 101
-VA: Infected: 5,077 | Recovered: None | Deceased: 130
-NC: Infected: 4,312 | Recovered: None | Deceased: 80
-MO: Infected: 4,024 | Recovered: None | Deceased: 109
-AZ: Infected: 3,393 | Recovered: None | Deceased: 108
-WI: Infected: 3,213 | Recovered: None | Deceased: 137
-SC: Infected: 3,207 | Recovered: None | Deceased: 80
-AL: Infected: 3,191 | Recovered: None | Deceased: 91
-NV: Infected: 2,700 | Recovered: None | Deceased: 102
-MS: Infected: 2,642 | Recovered: None | Deceased: 93
-RI: Infected: 2,349 | Recovered: 35 | Deceased: 56
-UT: Infected: 2,206 | Recovered: None | Deceased: 18
-OK: Infected: 1,868 | Recovered: 865 | Deceased: 94
-DC: Infected: 1,778 | Recovered: 447 | Deceased: 47
-KY: Infected: 1,693 | Recovered: 464 | Deceased: 90
-IA: Infected: 1,510 | Recovered: 585 | Deceased: 34
-DE: Infected: 1,479 | Recovered: 191 | Deceased: 33
-MN: Infected: 1,427 | Recovered: 793 | Deceased: 64
-ID: Infected: 1,396 | Recovered: None | Deceased: 25
-OR: Infected: 1,371 | Recovered: None | Deceased: 48
-KS: Infected: 1,268 | Recovered: None | Deceased: 55
-AR: Infected: 1,226 | Recovered: 340 | Deceased: 24
-NM: Infected: 1,091 | Recovered: 235 | Deceased: 19
-NH: Infected: 885 | Recovered: 234 | Deceased: 22
-PR: Infected: 788 | Recovered: None | Deceased: 42
-VT: Infected: 711 | Recovered: 15 | Deceased: 25
-NE: Infected: 700 | Recovered: None | Deceased: 17
-SD: Infected: 626 | Recovered: 189 | Deceased: 6
-ME: Infected: 616 | Recovered: 256 | Deceased: 19
-WV: Infected: 577 | Recovered: 63 | Deceased: 5
-HI: Infected: 465 | Recovered: 284 | Deceased: 8
-MT: Infected: 377 | Recovered: 169 | Deceased: 6
-WY: Infected: 340 | Recovered: 129 | Deceased: 0
-ND: Infected: 293 | Recovered: 119 | Deceased: 7
-AK: Infected: 257 | Recovered: 63 | Deceased: 8
+NY: Infected: 188,694 | Recovered: 23,887 | Deceased: 9,385
+NJ: Infected: 61,850 | Recovered: None | Deceased: 2,350
+MA: Infected: 25,475 | Recovered: None | Deceased: 756
+MI: Infected: 24,638 | Recovered: 433 | Deceased: 1,487
+PA: Infected: 22,833 | Recovered: None | Deceased: 507
+CA: Infected: 21,794 | Recovered: None | Deceased: 651
+IL: Infected: 20,852 | Recovered: None | Deceased: 720
+LA: Infected: 20,595 | Recovered: None | Deceased: 840
+FL: Infected: 19,918 | Recovered: None | Deceased: 474
+TX: Infected: 13,484 | Recovered: 2,014 | Deceased: 271
+GA: Infected: 12,550 | Recovered: None | Deceased: 442
+CT: Infected: 12,035 | Recovered: None | Deceased: 554
+WA: Infected: 10,411 | Recovered: None | Deceased: 508
+MD: Infected: 8,225 | Recovered: 456 | Deceased: 235
+IN: Infected: 7,928 | Recovered: None | Deceased: 343
+CO: Infected: 7,303 | Recovered: None | Deceased: 290
+OH: Infected: 6,604 | Recovered: None | Deceased: 253
+TN: Infected: 5,308 | Recovered: 1,504 | Deceased: 101
+VA: Infected: 5,274 | Recovered: None | Deceased: 141
+NC: Infected: 4,520 | Recovered: None | Deceased: 81
+MO: Infected: 4,160 | Recovered: None | Deceased: 110
+AL: Infected: 3,583 | Recovered: None | Deceased: 93
+AZ: Infected: 3,539 | Recovered: None | Deceased: 115
+WI: Infected: 3,341 | Recovered: None | Deceased: 144
+SC: Infected: 3,319 | Recovered: None | Deceased: 82
+NV: Infected: 2,836 | Recovered: None | Deceased: 114
+MS: Infected: 2,781 | Recovered: None | Deceased: 96
+RI: Infected: 2,665 | Recovered: 35 | Deceased: 63
+UT: Infected: 2,303 | Recovered: None | Deceased: 18
+OK: Infected: 1,970 | Recovered: 865 | Deceased: 96
+KY: Infected: 1,963 | Recovered: 607 | Deceased: 97
+DC: Infected: 1,875 | Recovered: 493 | Deceased: 50
+DE: Infected: 1,625 | Recovered: 213 | Deceased: 35
+MN: Infected: 1,621 | Recovered: 842 | Deceased: 70
+IA: Infected: 1,587 | Recovered: 674 | Deceased: 41
+OR: Infected: 1,527 | Recovered: None | Deceased: 52
+ID: Infected: 1,426 | Recovered: None | Deceased: 27
+KS: Infected: 1,337 | Recovered: None | Deceased: 56
+AR: Infected: 1,280 | Recovered: 367 | Deceased: 27
+NM: Infected: 1,245 | Recovered: 295 | Deceased: 26
+NH: Infected: 985 | Recovered: 239 | Deceased: 23
+PR: Infected: 897 | Recovered: None | Deceased: 44
+NE: Infected: 814 | Recovered: None | Deceased: 17
+SD: Infected: 730 | Recovered: 197 | Deceased: 6
+VT: Infected: 727 | Recovered: 15 | Deceased: 27
+ME: Infected: 633 | Recovered: 266 | Deceased: 19
+WV: Infected: 611 | Recovered: 83 | Deceased: 8
+HI: Infected: 499 | Recovered: 310 | Deceased: 9
+MT: Infected: 387 | Recovered: 169 | Deceased: 6
+ND: Infected: 308 | Recovered: 121 | Deceased: 8
+AK: Infected: 272 | Recovered: 66 | Deceased: 8
+WY: Infected: 270 | Recovered: 138 | Deceased: 0
 GU: Infected: 133 | Recovered: 58 | Deceased: 5
 VI: Infected: 51 | Recovered: 43 | Deceased: 1
 MP: Infected: 11 | Recovered: None | Deceased: 2
 AS: Infected: 0 | Recovered: None | Deceased: 2
-Total Infected: 523,278 | Total Recovered: 24,196 | Total Dead: 20,339
+Total Infected: 553,602 | Total Recovered: 34,390 | Total Dead: 21,984
+Last fetched: 13/04/2020 00:26:34
+```
+
+You can also use the '--gui' switch to start the program with a graphical user interface:
+```shell.command
+
+$> covid_tracker --gui
+
 ```
