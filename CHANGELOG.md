@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/tayjaybabee/covid_tracker/tree/HEAD)
+
+[Full Changelog](https://github.com/tayjaybabee/covid_tracker/compare/v1.0a1.2...HEAD)
+
+**Implemented enhancements:**
+
+- Should have a README with basic instructions [\#2](https://github.com/tayjaybabee/covid_tracker/issues/2)
+
 ## [v1.0a1.2](https://github.com/tayjaybabee/covid_tracker/tree/v1.0a1.2) (2020-04-13)
 
 [Full Changelog](https://github.com/tayjaybabee/covid_tracker/compare/v1.0a1.1...v1.0a1.2)
