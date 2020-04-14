@@ -1,5 +1,7 @@
 # covid_tracker
 
+[![Join the chat at https://gitter.im/covid_tracker/community](https://badges.gitter.im/covid_tracker/community.svg)](https://gitter.im/covid_tracker/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 I want to have a lot more features, but for now this just gathers the latest data reported about the United States, state-by-state and prints out each states total infected, recovered, and deceased in order of most infected state to least.
 ```
 NY: Infected: 188,694 | Recovered: 23,887 | Deceased: 9,385
