@@ -32,10 +32,7 @@ class SettingsWindow:
         ]
         return _layout
 
-    def __init__(self):
-
-        self.config = run.config
-
+    def window(self):
         if self.config is None:
             qt.theme('Dark2')
         else:
@@ -43,21 +40,29 @@ class SettingsWindow:
 
         window = qt.Window('Settings - CoViD 19 Tracker', layout=self.layout(), icon=c_icon, force_toplevel=True)
 
+        return window
+
+    def __init__(self):
+
+        self.config = run.config
+
+        win = self.window()
+
         while True:
-            event, values = window.read(timeout=100)
+            event, values = win.read(timeout=100)
 
             if event is None or event == 'settings_win_cancel_bttn':
-                window.close()
+                win.close()
 
             if event == 'settings_win_ok_bttn':
                 qt.PopupOK(
                     'Saving settings isn\'t currently implemented. This will close the window and NOT save settings',
                     icon=err_icon)
-                window.close()
+                win.close()
 
             if event == 'look_and_feel_combo':
                 qt.theme(str(values['look_and_feel_combo']))
-                window.refresh()
+                win.refresh()
 
 
 SettingsWindow()
