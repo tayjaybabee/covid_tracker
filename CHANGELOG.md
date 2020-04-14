@@ -2,7 +2,17 @@
 
 ## [Unreleased](https://github.com/tayjaybabee/covid_tracker/tree/HEAD)
 
-[Full Changelog](https://github.com/tayjaybabee/covid_tracker/compare/v1.0a1.2...HEAD)
+[Full Changelog](https://github.com/tayjaybabee/covid_tracker/compare/v1.0a1.3...HEAD)
+
+**Implemented enhancements:**
+
+- \[Enhancement\] Assign Icons to Application [\#13](https://github.com/tayjaybabee/covid_tracker/issues/13)
+- \[Enhancement\] Make GUI More Appealing [\#12](https://github.com/tayjaybabee/covid_tracker/issues/12)
+- There should be a way to change settings [\#4](https://github.com/tayjaybabee/covid_tracker/issues/4)
+
+## [v1.0a1.3](https://github.com/tayjaybabee/covid_tracker/tree/v1.0a1.3) (2020-04-14)
+
+[Full Changelog](https://github.com/tayjaybabee/covid_tracker/compare/v1.0a1.2...v1.0a1.3)
 
 **Implemented enhancements:**
 
