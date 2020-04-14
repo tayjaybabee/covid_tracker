@@ -16,6 +16,8 @@ from pathlib import Path
 from configparser import ConfigParser
 from conf import run
 from lib.gui.models.menus import main_menu
+import yaml
+import matplotlib.pyplot as plt
 
 parser = ArgumentParser('covid_info',
                         prefix_chars='+-',
@@ -79,6 +81,11 @@ def fetch_data():
 
     # Sort data by total tested positive
     s_data = sorted(data, key=lambda d: d["positive"], reverse=True)
+
+    yamlexportfilename = 'data.yaml'
+    yamlfilehandle = open(yamlexportfilename, 'wt')
+    yamlfilehandle.write(yaml.dump(s_data))
+    yamlfilehandle.close()
 
     # Set up accumulators for important stats delivered after sorted results
     total_infected = 0
