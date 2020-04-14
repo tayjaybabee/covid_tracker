@@ -6,3 +6,4 @@ dist/
 *.ini
 *.tar
 Thumbs.db*
+__pycache__/
