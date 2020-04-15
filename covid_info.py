@@ -11,7 +11,7 @@ from argparse import ArgumentParser
 from time import sleep
 from datetime import datetime
 from assets.images.icons import main as c_icon, error as err_icon
-from lib.analyze_timestamps import latestTimeStamp
+from lib.analyze_timestamps import latest_timestamp
 import os
 from pathlib import Path
 from configparser import ConfigParser
@@ -69,47 +69,47 @@ def fetch_data():
 
     # API URL
     url = 'https://covidtracking.com/api/v1/states/current.json'
-    readfromURL=False
+    should_read = False
 
     data = []
-    
-    yamlimportfilename = 'data.yaml'
-    if Path(yamlimportfilename).exists():
-        currentTime = datetime.now()
-        yamlimportfilehandle = open(yamlimportfilename,'rt')
-        data = yaml.safe_load(yamlimportfilehandle.read())
-        yamlimportfilehandle.close()
-        # readfromURL=False
-        import_timestamp = latestTimeStamp(data)
-        age_seconds = (currentTime - import_timestamp).total_seconds()
+
+    yaml_dbname = 'data.yaml'
+    if Path(yaml_dbname).exists():
+        current_time = datetime.now()
+        yaml_db_filepath = open(yaml_dbname, 'rt')
+        data = yaml.safe_load(yaml_db_filepath.read())
+        yaml_db_filepath.close()
+        # should_read=False
+        import_timestamp = latest_timestamp(data)
+        age_seconds = (current_time - import_timestamp).total_seconds()
         if age_seconds > 21600:
-            readfromURL = True  # file too old
+            should_read = True  # file too old
         else:
-            readfromURL = False # file recent; don't hit up the web server this time
+            should_read = False  # file recent; don't hit up the web server this time
     else:
-        readfromURL = True      # file not found; retrieve data from web server and save it to the file
-   
-    if readfromURL == True:
+        should_read = True  # file not found; retrieve data from web server and save it to the file
+
+    if should_read:
         # Get web results or print connection exception
         try:
             res = requests.get(url)
-            readfromURL=True
+            should_read = True
 
             # Extract data from page
             data = res.json()
         except requests.exceptions.ConnectionError as e:
             print('Unable to reach data source. Please check your internet connection and try again!')
-            readfromURL=False
+            should_read = False
             exit(6)
 
     # Sort data by total tested positive
     s_data = sorted(data, key=lambda d: d["positive"], reverse=True)
 
-    if readfromURL == True:
-        yamlexportfilename = 'data.yaml'
-        yamlfilehandle = open(yamlexportfilename, 'wt')
-        yamlfilehandle.write(yaml.dump(s_data))
-        yamlfilehandle.close()
+    if should_read:
+        db_out_filename = 'data.yaml'
+        db_out = open(db_out_filename, 'wt')
+        db_out.write(yaml.dump(s_data))
+        db_out.close()
 
     # Set up accumulators for important stats delivered after sorted results
     total_infected = 0
@@ -178,9 +178,11 @@ if parser.gui:
 
     Qt.theme(app_theme)
 
+    menu_def = [['Application', 'Settings']]
+
     layout = [
-        [Qt.Menu(main_menu.definition, tearoff=False, pad=(200, 1))],
-        [Qt.MultilineOutput(autoscroll=True, key='output')],
+        [Qt.Menu(menu_def, tearoff=False, pad=(200, 1))],
+        [Qt.MultilineOutput(autoscroll=True, key='output', do_not_clear=False)],
         [Qt.Button('Refresh', enable_events=True, key='refresh_bttn'),
          Qt.Button('Inspect', enable_events=True, key='inspect_bttn', visible=False),
          Qt.CloseButton('Close', key='close_bttn')]
