@@ -11,6 +11,7 @@ from argparse import ArgumentParser
 from time import sleep
 from datetime import datetime
 from assets.images.icons import main as c_icon, error as err_icon
+from lib.analyze_timestamps import latestTimeStamp
 import os
 from pathlib import Path
 from configparser import ConfigParser
@@ -74,12 +75,22 @@ def fetch_data():
     
     yamlimportfilename = 'data.yaml'
     if Path(yamlimportfilename).exists():
+        currentTime = datetime.now()
         yamlimportfilehandle = open(yamlimportfilename,'rt')
         data = yaml.safe_load(yamlimportfilehandle.read())
         yamlimportfilehandle.close()
-        readfromURL=False
+        # readfromURL=False
+        import_timestamp = latestTimeStamp(data)
+        age_seconds = (currentTime - import_timestamp).total_seconds()
+        if age_seconds > 21600:
+            readfromURL = True  # file too old
+        else:
+            readfromURL = False # file recent; don't hit up the web server this time
     else:
-            # Get web results or print connection exception
+        readfromURL = True      # file not found; retrieve data from web server and save it to the file
+   
+    if readfromURL == True:
+        # Get web results or print connection exception
         try:
             res = requests.get(url)
             readfromURL=True
@@ -90,11 +101,6 @@ def fetch_data():
             print('Unable to reach data source. Please check your internet connection and try again!')
             readfromURL=False
             exit(6)
-
-
-
-    
-
 
     # Sort data by total tested positive
     s_data = sorted(data, key=lambda d: d["positive"], reverse=True)
