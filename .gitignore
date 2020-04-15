@@ -6,3 +6,5 @@ dist/
 *.ini
 *.tar
 Thumbs.db*
+data.yaml
+__pycache__/

@@ -9,6 +9,8 @@ pyinstaller = "*"
 [packages]
 requests = "*"
 PySimpleGUIQt = "*"
+pyyaml = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.6"
