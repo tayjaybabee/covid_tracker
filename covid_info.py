@@ -11,7 +11,7 @@ from argparse import ArgumentParser
 from time import sleep
 from datetime import datetime
 from assets.images.icons import main as c_icon, error as err_icon
-from lib.analyze_timestamps import latestTimeStamp
+from lib.analyze_timestamps import latest_timestamp
 import os
 from pathlib import Path
 from configparser import ConfigParser
@@ -80,7 +80,7 @@ def fetch_data():
         data = yaml.safe_load(yaml_db_filepath.read())
         yaml_db_filepath.close()
         # should_read=False
-        import_timestamp = latestTimeStamp(data)
+        import_timestamp = latest_timestamp(data)
         age_seconds = (current_time - import_timestamp).total_seconds()
         if age_seconds > 21600:
             should_read = True  # file too old
