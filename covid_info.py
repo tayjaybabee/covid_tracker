@@ -68,24 +68,42 @@ def fetch_data():
 
     # API URL
     url = 'https://covidtracking.com/api/v1/states/current.json'
+    readfromURL=False
 
-    # Get web results or print connection exception
-    try:
-        res = requests.get(url)
-    except requests.exceptions.ConnectionError as e:
-        print('Unable to reach data source. Please check your internet connection and try again!')
-        exit(6)
+    data = []
+    
+    yamlimportfilename = 'data.yaml'
+    if Path(yamlimportfilename).exists():
+        yamlimportfilehandle = open(yamlimportfilename,'rt')
+        data = yaml.safe_load(yamlimportfilehandle.read())
+        yamlimportfilehandle.close()
+        readfromURL=False
+    else:
+            # Get web results or print connection exception
+        try:
+            res = requests.get(url)
+            readfromURL=True
 
-    # Extract data from page
-    data = res.json()
+            # Extract data from page
+            data = res.json()
+        except requests.exceptions.ConnectionError as e:
+            print('Unable to reach data source. Please check your internet connection and try again!')
+            readfromURL=False
+            exit(6)
+
+
+
+    
+
 
     # Sort data by total tested positive
     s_data = sorted(data, key=lambda d: d["positive"], reverse=True)
 
-    yamlexportfilename = 'data.yaml'
-    yamlfilehandle = open(yamlexportfilename, 'wt')
-    yamlfilehandle.write(yaml.dump(s_data))
-    yamlfilehandle.close()
+    if readfromURL == True:
+        yamlexportfilename = 'data.yaml'
+        yamlfilehandle = open(yamlexportfilename, 'wt')
+        yamlfilehandle.write(yaml.dump(s_data))
+        yamlfilehandle.close()
 
     # Set up accumulators for important stats delivered after sorted results
     total_infected = 0
