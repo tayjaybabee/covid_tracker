@@ -63,6 +63,3 @@ class SettingsWindow:
             if event == 'look_and_feel_combo':
                 qt.theme(str(values['look_and_feel_combo']))
                 win.refresh()
-
-
-SettingsWindow()

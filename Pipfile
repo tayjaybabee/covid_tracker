@@ -5,12 +5,16 @@ verify_ssl = true
 
 [dev-packages]
 pyinstaller = "*"
+yappi = "*"
+twisted = "*"
 
 [packages]
 requests = "*"
 PySimpleGUIQt = "*"
 pyyaml = "*"
 matplotlib = "*"
+pysimplegui = "*"
+inspy_logger = "*"
 
 [requires]
 python_version = "3.6"
