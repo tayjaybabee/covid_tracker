@@ -15,6 +15,8 @@ from pathlib import Path
 from configparser import ConfigParser
 from conf import run
 
+from lib.api import fetch_data
+
 parser = ArgumentParser('covid_info',
                         prefix_chars='+-',
                         add_help=True,
@@ -58,3 +60,6 @@ if parser.gui:
     print('')
     from lib.gui.models.windows.main import MainWindow
     MainWindow()
+else:
+    fetch_data()
+

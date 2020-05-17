@@ -16,10 +16,12 @@ def fetch_data(gui=False, **kwargs):
 
     :return: dict
     """
-    global fetched
+    global fetched, print
 
     if 'main_win' in kwargs.keys():
         print = kwargs['main_win'].print
+    else:
+        print = print
 
 
     # API URL
