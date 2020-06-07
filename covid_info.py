@@ -35,6 +35,8 @@ conf_path = Path(os.path.abspath('conf/'))
 
 conf_file = Path(os.path.abspath('conf/settings.ini'))
 
+app_theme = 'Dark2'
+
 if conf_path.exists():
     if conf_file.exists():
         if parser.gui:
@@ -42,8 +44,7 @@ if conf_path.exists():
             config.read('conf/settings.ini')
             run.config = config
             if 'GUI' in config:
-                print(config['GUI']['theme'])
-                app_theme = config['GUI']['theme']
+                print(config[ 'GUI' ][ 'theme' ])
 
         loaded_settings = True
     else:
@@ -176,7 +177,8 @@ if parser.gui:
     print('')
     import PySimpleGUIQt as Qt
 
-    Qt.theme(app_theme)
+
+    Qt.theme('DarkAmber')
 
     menu_def = [['Application', 'Settings']]
 
