@@ -55,6 +55,11 @@ else:
 if parser.gui and not app_theme:
     app_theme = 'Dark2'
 
+
+def percentage(part, whole):
+    return 100 * float(part) / float(whole)
+
+
 fetched = False
 
 
@@ -161,9 +166,14 @@ def fetch_data():
 
     # Prepare totals statement and print it
     total_statement = str(
-        f'Total Infected: {f_total_infected} | Total Recovered: {f_total_recovered} | Total Dead: {f_total_dead}')
+            f'Total Infected: {f_total_infected} | Total Recovered: {f_total_recovered} | Total Dead: {f_total_dead}')
     print(total_statement)
+
     fetched = True
+
+    dr_pcent = percentage(int(total_dead), int(total_infected))
+
+    print(f"This means that the current death rate for CoViD '19 is: {round(dr_pcent, 2)}%")
 
     last_fetched = datetime.now()
     lf_str = last_fetched.strftime("%d/%m/%Y %H:%M:%S")
@@ -180,18 +190,19 @@ if parser.gui:
 
     Qt.theme('DarkAmber')
 
-    menu_def = [['Application', 'Settings']]
+    menu_def = [ [ 'Application', 'Settings' ] ]
 
     layout = [
-        [Qt.Menu(menu_def, tearoff=False, pad=(200, 1))],
-        [Qt.MultilineOutput(autoscroll=True, key='output', do_not_clear=False)],
-        [Qt.Button('Refresh', enable_events=True, key='refresh_bttn'),
-         Qt.Button('Inspect', enable_events=True, key='inspect_bttn', visible=False),
-         Qt.CloseButton('Close', key='close_bttn')]
-    ]
+            [ Qt.Menu(menu_def, tearoff=False, pad=(200, 1)) ],
+            [ Qt.MultilineOutput(autoscroll=True, key='output', do_not_clear=False) ],
+            [ Qt.Button('Refresh', enable_events=True, key='refresh_bttn'),
+              Qt.Button('Inspect', enable_events=True, key='inspect_bttn', visible=False),
+              Qt.CloseButton('Close', key='close_bttn') ]
+            ]
 
-    window = Qt.Window('CoVid 19 United States Stats', layout, size=(500, 600), icon=c_icon)
-    print = window['output'].print
+    window = Qt.Window('CoVid 19 United States Stats', layout, size=(500, 600), icon=c_icon, alpha_channel=.8,
+                       no_titlebar=True)
+    print = window[ 'output' ].print
 
     while True:
         event, values = window.read(timeout=100)
@@ -200,7 +211,7 @@ if parser.gui:
             data = fetch_data()
 
         if fetched:
-            window['inspect_bttn'].Update(visible=True)
+            window[ 'inspect_bttn' ].Update(visible=True)
             window.refresh()
 
         if event is None or event == 'close_bttn':
